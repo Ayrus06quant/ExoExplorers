@@ -30,7 +30,7 @@ year = st.selectbox("📅 Select Year", years, index=len(years) - 1)
 # ----------------------------
 # Load CSV
 # ----------------------------
-csv_path = os.path.join(project_root, "data", "viirs", f"VIIRS_India_{year}.csv")
+csv_path = os.path.join(project_root, "src", "data", "viirs", f"VIIRS_India_{year}.csv")
 try:
     df = pd.read_csv(csv_path)
 except FileNotFoundError:
@@ -53,7 +53,7 @@ gdf = gpd.GeoDataFrame(
 )
 
 # Clip to India boundary
-india = gpd.read_file(os.path.join(project_root, "data", "boundaries", "india_boundary.geojson"))
+india = gpd.read_file(os.path.join(project_root, "src", "data", "boundaries", "india_boundary.geojson"))
 gdf = gpd.sjoin(gdf, india, predicate='within')
 
 # Normalize brightness
