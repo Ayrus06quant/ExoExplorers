@@ -1,68 +1,159 @@
-# 🌌 Mapping India’s Light Pollution (2014–2023)
-**Team Name:** ExoExplorers
-**Hackathon:** Orion Astrathon – Problem Statement 03
+# ExoExplorers Orion - Light Pollution Analysis Project
 
----
+This repository contains a comprehensive analysis of light pollution trends in India using VIIRS satellite data and population growth statistics. The project includes interactive visualizations, temporal analysis, and future predictions.
 
-## 🧠 Problem Overview
+## Project Structure
 
-Light pollution is a rising environmental concern, especially in rapidly urbanizing countries like India. Our goal is to map and analyze the growth of artificial night lighting over India using satellite-based datasets from 2014 to 2023.
+```
+ExoExplorers_Orion/
+├── src/
+│   ├── data/
+│   │   ├── viirs/         # VIIRS satellite data (2014-2023)
+│   │   ├── population/    # World Bank population growth data
+│   │   └── boundaries/    # India boundary GeoJSON
+│   ├── scripts/
+│   │   ├── heatmap/       # Heatmap generation and analysis scripts
+│   │   │   ├── 2014.py - 2023.py    # Year-specific heatmap scripts
+│   │   │   ├── predicted_2025.py - predicted_2029.py  # Future predictions
+│   │   │   ├── temporal_analysis.py  # Basic temporal analysis
+│   │   │   ├── temporal_analysis_robust.py  # Advanced temporal analysis
+│   │   │   ├── analyze_without_outliers.py  # Outlier analysis
+│   │   │   └── update_year_scripts.py  # Script updater
+│   │   └── analysis/
+│   │       └── population_light_correlation.py  # Population correlation analysis
+│   ├── app.py            # Streamlit web application
+│   └── future_predictions.csv  # Generated future predictions
+├── docs/
+│   └── visualizations/
+│       ├── heatmaps/      # Generated heatmap visualizations
+│       └── analysis/      # Analysis results and plots
+└── requirements.txt       # Project dependencies
+```
 
----
+## Data Sources
 
-## 📦 What We Have Done So Far
+1. VIIRS Satellite Data (2014-2023)
+   - Annual light pollution measurements for India
+   - Resolution: 15 arc-second (approximately 500m)
+   - Source: NASA VIIRS Day-Night Band
+   - Format: CSV with lat/lon coordinates and radiance values
 
-### ✅ Data Collection (2014–2023)
-- Downloaded monthly VIIRS DNB Nighttime Lights satellite data from **Google Earth Engine**
-- Sampled radiance values across India (5000+ points per year)
-- Exported cleaned CSVs for each year (2014 to 2023)
+2. Population Growth Data
+   - World Bank population growth statistics
+   - Annual percentage growth rates
+   - Period: 2014-2023
+   - Source: World Bank Open Data
 
-### ✅ Geospatial Processing
-- Clipped all spatial data to **India's geographic boundary** using a GeoJSON file
-- Normalized light intensity (`avg_rad`) values for heatmap scaling
+3. Geographic Data
+   - India boundary GeoJSON
+   - Used for spatial analysis and visualization
 
-### ✅ Visualization
-- Created smooth **heatmaps** for all years using:
-  - `folium` for interactive maps
-  - `matplotlib` + `scipy` for PNG-based overlays
-- Built a pixel-based **radiance scatter map** similar to [lightpollutionmap.info](https://lightpollutionmap.info)
+## Analysis Components
 
+1. Light Pollution Analysis
+   - Temporal analysis of light pollution trends
+   - Regional variation studies
+   - Outlier detection and management
+   - Future predictions (2025-2029)
 
----
+2. Population Correlation
+   - Population growth trends
+   - Correlation with light pollution
+   - Statistical significance testing
+   - Regional analysis
 
-## 🔍 Insights So Far
+3. Interactive Visualization
+   - Web-based heatmap interface
+   - Location-specific light pollution checking
+   - Dark sky suitability assessment
 
-- Significant increase in light pollution intensity around major metro cities (Delhi, Mumbai, Bengaluru) from 2014 to 2023
-- Dark zones shrinking year-over-year in the central and eastern regions
-- Overall urban glow expanding — strong correlation with known urbanization zones
+## Key Findings
 
----
+1. Light Pollution Trends
+   - Overall increase of 146% from 2014 to 2023
+   - Significant spike observed in 2018 (75.09% increase)
+   - Regional variations identified between All India and East India
+   - Outlier removal significantly improved data quality
 
-## 🛠️ Tools & Technologies
+2. Population Growth Correlation
+   - Average population growth rate: 1.042%
+   - Strong negative correlation (-0.800) with light pollution
+   - Indicates inverse relationship between population growth and light pollution
+   - Regional variations in correlation patterns
 
-- 📡 Google Earth Engine (VIIRS DNB imagery)
-- 🐍 Python (pandas, geopandas, folium, matplotlib, scipy)
-- 🗺️ Leaflet.js (via Folium)
-- 🧭 GeoJSON for India's spatial boundary
+3. Future Predictions
+   - Projected light pollution trends for 2025-2029
+   - Based on historical patterns and statistical models
+   - Includes confidence intervals and uncertainty measures
 
----
+## Setup and Usage
 
-## 🔜 What’s Next
+1. Clone the repository
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv .venv
+   .venv\Scripts\activate  # Windows
+   source .venv/bin/activate  # Linux/Mac
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Run the web application:
+   ```bash
+   python -m streamlit run src/app.py
+   ```
+5. Run analysis scripts:
+   ```bash
+   python src/scripts/heatmap/temporal_analysis_robust.py
+   python src/scripts/analysis/population_light_correlation.py
+   ```
 
-- Add **year-over-year comparison slider** in a Streamlit or Folium dashboard
-- Perform **correlation analysis** between light pollution and urban growth/population density
-- Identify and visualize **dark sky reserves**
-- Explore **ML-based trend prediction**
+## Dependencies
 
----
+- Python 3.8+
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- plotly
+- statsmodels
+- streamlit
+- folium
+- geopandas
+- shapely
+- geopy
 
-## 👥 Team
+## Features
 
-- Gaurav – Data & Visualization
-- Chirag – Earth Engine & GIS
-- Surya – Analysis & Report
-- Shreyash – Web/Dashboard (if applicable)
+1. Interactive Web Interface
+   - Year selection (2014-2023)
+   - Location-specific light pollution checking
+   - Dark sky suitability assessment
+   - Customizable visualization parameters
 
----
+2. Analysis Tools
+   - Robust statistical analysis
+   - Outlier detection and removal
+   - Temporal trend analysis
+   - Population correlation studies
+   - Future predictions
 
-> ✨ This is a mid-submission summary. We're on track to deliver a powerful visualization and statistical story on how India's night sky is changing over time.
+3. Visualization Options
+   - Heatmap generation
+   - Trend plots
+   - Distribution analysis
+   - Correlation scatter plots
+   - Regional comparisons
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
