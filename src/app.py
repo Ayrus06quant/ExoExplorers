@@ -6,7 +6,7 @@ from shapely.geometry import Point
 import folium
 from folium.plugins import HeatMap, Geocoder
 from streamlit_folium import st_folium
-from geopy.distance import geodesic
+#from geopy.distance import geodesic
 import os
 
 # Get the project root directory
