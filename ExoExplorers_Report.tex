@@ -396,6 +396,93 @@ The project implemented a sophisticated XGBoost Regression model for predicting 
     \item Emerging industrial zones in Odisha and Andhra Pradesh projected to see over 110\% growth
 \end{itemize}
 
+\section{Interactive Web Application}
+
+\subsection{Application Overview}
+The project includes a comprehensive interactive web application built with Streamlit that allows users to explore light pollution data across India for both historical periods (2014-2023) and future predictions (2024-2029). The application serves as a powerful visualization and analysis tool for understanding light pollution patterns and their implications for dark sky observations.
+
+\subsection{Key Features}
+
+\subsubsection{Temporal Selection Interface}
+\begin{itemize}
+    \item Year selector allowing users to choose any year from 2014 to 2029
+    \item Seamless transition between historical data and future predictions
+    \item Real-time data loading from VIIRS satellite records and model predictions
+\end{itemize}
+
+\subsubsection{Interactive Heatmap Visualization}
+\begin{itemize}
+    \item High-resolution heatmap displaying light pollution intensity across India
+    \item Dark-themed base map enhancing visibility of light pollution patterns
+    \item Dynamic color scaling based on radiance values for each year
+    \item Location search functionality with geocoding capabilities
+    \item Pan and zoom controls for detailed exploration of specific regions
+\end{itemize}
+
+\subsubsection{Location-Specific Analysis}
+\begin{itemize}
+    \item Precise coordinate input for checking light pollution at specific locations
+    \item Nearest data point identification using geodesic distance calculations
+    \item Radiance value display with appropriate units (nW/cm²/sr)
+    \item Automatic dark sky suitability assessment based on established thresholds
+    \item Color-coded markers indicating observation suitability (green for suitable, red for unsuitable)
+\end{itemize}
+
+\subsubsection{Technical Implementation}
+\begin{itemize}
+    \item Built on Streamlit framework for rapid and responsive deployment
+    \item Integration with Folium for interactive geospatial visualization
+    \item GeoJSON processing for accurate boundary representation
+    \item Seamless handling of both historical VIIRS data and XGBoost model predictions
+    \item Optimized data processing for smooth user experience even with large datasets
+\end{itemize}
+
+\subsection{User Experience Design}
+
+The application employs a clean, intuitive interface that balances simplicity with powerful analytical capabilities:
+
+\begin{itemize}
+    \item \textbf{Layout}: Wide-screen layout maximizing map visualization area while maintaining controls accessibility
+    \item \textbf{Navigation}: Intuitive controls organized in a logical top-to-bottom workflow
+    \item \textbf{Feedback}: Real-time feedback on data status and analysis results
+    \item \textbf{Iconography}: Emoji-enhanced labels for improved visual recognition of key functions
+    \item \textbf{Accessibility}: Clear contrast between map elements and controls, with logical tabbing order
+\end{itemize}
+
+\subsection{Application Use Cases}
+
+The web application supports multiple stakeholder needs:
+
+\begin{enumerate}
+    \item \textbf{Astronomers and Stargazers}
+    \begin{itemize}
+        \item Identification of suitable dark sky observation locations
+        \item Assessment of light pollution trends at existing observatory sites
+        \item Planning for future observation sessions based on predicted conditions
+    \end{itemize}
+    
+    \item \textbf{Urban Planners and Policymakers}
+    \begin{itemize}
+        \item Visualization of light pollution growth patterns in urban areas
+        \item Identification of high-growth regions requiring intervention
+        \item Assessment of the effectiveness of existing light pollution regulations
+    \end{itemize}
+    
+    \item \textbf{Environmental Researchers}
+    \begin{itemize}
+        \item Analysis of light pollution impact on wildlife corridors
+        \item Correlation of light pollution with other environmental factors
+        \item Monitoring of protected areas for light encroachment
+    \end{itemize}
+    
+    \item \textbf{Educational Institutions}
+    \begin{itemize}
+        \item Teaching tool for environmental science and astronomy courses
+        \item Visualization aid for public awareness campaigns
+        \item Interactive demonstration of temporal trends in anthropogenic impact
+    \end{itemize}
+\end{enumerate}
+
 \section{Light Pollution Mitigation Recommendations}
 
 Based on the comprehensive analysis and future predictions, the following strategies are recommended to mitigate light pollution while supporting sustainable development:
